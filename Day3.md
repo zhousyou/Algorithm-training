@@ -2,6 +2,9 @@
 
 ### [203 移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/)
 
+>题目链接/文章讲解/视频讲解：：https://programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html
+
+
 
 ### 思路
 
@@ -26,6 +29,8 @@ class Solution:
 ***
 
 ### [707 设计链表](https://leetcode.cn/problems/design-linked-list/description/)
+
+>题目链接/文章讲解/视频讲解：https://programmercarl.com/0707.%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8.html
 
 ### 思路
 
@@ -100,6 +105,8 @@ class MyLinkedList:
 ***
 
 ### [206 反转链表](https://leetcode.cn/problems/reverse-linked-list/description/)
+
+>题目链接/文章讲解/视频讲解：https://programmercarl.com/0206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.html
 
 ### 思路
 
