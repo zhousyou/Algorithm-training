@@ -154,3 +154,27 @@ if __name__ == "__main__":
     main()
 ```
 
+**更新后的代码**
+
+```python {.line-numbers}
+def main():
+    n = int(input())
+    sum = 0
+    pre = [0] * n
+    for i in range(n):
+        sum += int(input())
+        pre[i] = sum
+    # print(pre)
+    while True:
+        try:
+            tmp = list(map(int, input().split()))
+            if tmp[0] == 0:
+                res = pre[tmp[1]] - 0
+            else:
+                res = pre[tmp[1]] - pre[tmp[0]-1]
+            print(res)
+        except:
+            break
+if __name__ == "__main__":
+    main()
+```
