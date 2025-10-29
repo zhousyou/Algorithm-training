@@ -116,7 +116,45 @@ class Solution:
 ### 思路
 
 这道题是三数之和的升级版，用双指针的方式同样可以做出来，用字典的方式的话，需要O(n*3)的时间复杂度。
+相比于三数之和有几个需要注意的点，首先是去重，外层循环需要判断`i > 0 and nums[i] == nums[i-1]`, 内层循环需要判断`j > i+1 and nums[j] == nums[j-1]:`，重点在于内层循环`j > i + 1`的判断，如果`j>1`,当判断`nums[j] == nums[j-1]`时，`j-1`如果和i相等，则会跳过，缺失一种情况。所以要判断`j>i+1`。
+第二点就是剪枝的操作，不同于三数之和，这道题的`target`是任意值，按照三数之和的逻辑只能判断当`target>0`时，才可以剪枝。
 
 ### Python代码
 ```python {.line-numbers}
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums = sorted(nums)
+        res = []
+        # if len(nums) < 4:
+        #     return res
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            for j in range(i+1, len(nums)-1):
+
+                # if nums[i] > target:
+                #     return res
+                if j > i+1 and nums[j] == nums[j-1]:
+                    continue
+                
+                left, right = j+1, len(nums)-1
+                print(left, right)
+                while left < right:
+                    sum = nums[i] + nums[j] + nums[left] + nums[right]
+                    if sum > target:
+                        right -= 1
+                    elif sum < target:
+                        left += 1
+                    else:
+                        print(left, right)
+                        res.append([nums[i], nums[j], nums[left], nums[right]])
+
+
+                        while left<right and nums[left] == nums[left+1]:
+                            left += 1
+                        while left < right and nums[right] == nums[right-1]:
+                            right -= 1
+                        left += 1
+                        right -= 1
+        return res
 ```
