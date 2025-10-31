@@ -1,4 +1,4 @@
-# 代码随想录算法训练营第七天 ｜Leetcode151.翻转字符串里的单词 、卡码网：55.右旋转字符串 、Leetcode28. 实现 strStr()、 Leetcode459.重复的子字符串
+# 代码随想录算法训练营第八天 ｜Leetcode151.翻转字符串里的单词 、卡码网：55.右旋转字符串 、Leetcode28. 实现 strStr()、 Leetcode459.重复的子字符串
 
 ### [151 翻转字符串里的单词](https://leetcode.cn/problems/reverse-words-in-a-string/)
 
