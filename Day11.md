@@ -383,3 +383,44 @@ class Solution:
 
 ***
 
+### 层序遍历
+
+> **文章讲解：** https://programmercarl.com/0102.二叉树的层序遍历.html#_104-二叉树的最大深度
+>
+> **题目链接：** https://leetcode.cn/problems/binary-tree-level-order-traversal/description/
+
+
+### 思路
+
+二叉树的广度优先遍历，用一个队列来维护树中的元素，很经典的模版题目
+
+### python代码
+
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from collections import deque
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        res = []
+        if not root:
+            return res
+        que = deque()
+        que.append(root)
+        while que:
+            level = []
+            for _ in range(len(que)):
+                cur = que.popleft()
+                level.append(cur.val)
+                if cur.left:
+                    que.append(cur.left)
+                if cur.right:
+                    que.append(cur.right)
+            res.append(level)
+        return res
+```
+
