@@ -55,6 +55,131 @@ class Solution:
             return node
         return dfs(root)
 ```
+**统一迭代的方法：**
+
+* 前序遍历：
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        stack = []
+        stack.append(root)
+        
+        while stack:
+            node = stack.pop()
+            if node:
+                
+                if node.right:
+                    stack.append(node.right)
+                if node.left:
+                    stack.append(node.left)
+                stack.append(node)
+                stack.append(None)
+                
+            else:
+                node = stack.pop()
+                node.left, node.right = node.right, node.left
+        return root
+```
+
+* 中序遍历：
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        stack = []
+        stack.append(root)
+        
+        while stack:
+            node = stack.pop()
+            if node:
+                
+                if node.right:
+                    stack.append(node.right)
+                stack.append(node)
+                stack.append(None)
+
+                if node.left:
+                    stack.append(node.left)
+                
+                
+            else:
+                node = stack.pop()
+                node.left, node.right = node.right, node.left
+        return root
+```
+
+* 后序遍历：
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        stack = []
+        stack.append(root)
+        
+        while stack:
+            node = stack.pop()
+            if node:
+
+                stack.append(node)
+                stack.append(None)
+                if node.right:
+                    stack.append(node.right)
+                if node.left:
+                    stack.append(node.left)
+            else:
+                node = stack.pop()
+                node.left, node.right = node.right, node.left
+        return root
+```
+
+**###层序遍历**
+
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from collections import deque
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root :
+            return None
+        que = deque([root])
+
+        while que:
+            for _ in range(len(que)):
+                node = que.popleft()
+                node.left, node.right = node.right, node.left
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+        return root
+```
 
 ***
 
