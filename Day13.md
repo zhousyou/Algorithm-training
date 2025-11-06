@@ -93,3 +93,67 @@ class Solution:
         self.dfs(root, path, res)
         return res
 ```
+
+***
+
+## [404 左叶子之和](https://leetcode.cn/problems/sum-of-left-leaves/description/)
+
+> 文章讲解：题目链接/文章讲解/视频讲解：https://programmercarl.com/0404.%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C.html   
+
+
+### 思路
+
+重点是理解什么情况下能找到左叶子节点。当前节点有左节点，左子节点没有子节点时，是左叶子节点。`if node.left and not node.left.left and not node.left.right`.
+
+### Python代码
+
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def dfs(self, node):
+        if not node:
+            return 0
+        leftval = self.dfs(node.left)
+        rightval = self.dfs(node.right)
+        if node.left and not node.left.left and not node.left.right:
+            leftval = node.left.val
+        sum = leftval + rightval
+        return sum
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        return self.dfs(root)
+```
+
+***
+
+## [222.完全二叉树的节点个数](https://leetcode.cn/problems/count-complete-tree-nodes/description/)
+
+> 文章讲解：题目链接/文章讲解/视频讲解：https://programmercarl.com/0222.%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0.html   
+
+### 思路
+
+这道题和平衡二叉树很像，可以说是平衡二叉树的错误解法，求节点个数就是完全遍历左子树和右子树，相当于求树的深度，比较简单。
+
+### Python代码
+```python {.line-numbers}
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def dfs(self, node):
+        if not node:
+            return 0
+        left_nums = self.dfs(node.left)
+        right_nums = self.dfs(node.right)
+        return left_nums + right_nums + 1
+
+    def countNodes(self, root: Optional[TreeNode]) -> int:
+        return self.dfs(root)
+```
