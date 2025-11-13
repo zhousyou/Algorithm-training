@@ -59,14 +59,27 @@ def show_tree(node):
             res.append(node.val)
     return res
 
+### 组合
+
+def isPartion(s):
+    i, j = 0, len(s) - 1
+    while (i <= j):
+        if s[i] != s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+
 if __name__ == "__main__":
 
-    nums = [6,2,8,0,4,7,9,None,None,3,5]
-    root = createTree(nums)
-    res = show_tree(root)
-    print(res)
-    p = TreeNode(val=2)
-    q = TreeNode(val=4)
-    node = solution(root,p,q)
-    print(node.val)
+    # nums = [6,2,8,0,4,7,9,None,None,3,5]
+    # root = createTree(nums)
+    # res = show_tree(root)
+    # print(res)
+    # p = TreeNode(val=2)
+    # q = TreeNode(val=4)
+    # node = solution(root,p,q)
+    # print(node.val)
 
+    s = "a"
+    print(isPartion(s))
