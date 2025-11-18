@@ -1,4 +1,4 @@
-# 代码随想录算法训练营第二十一天 ｜Leetcode455.分发饼干 、Leetcode376.摆动序列 、Leetcode53.最大子序和
+# 代码随想录算法训练营第二十三天 ｜Leetcode455.分发饼干 、Leetcode376.摆动序列 、Leetcode53.最大子序和
 
 ## [455 分发饼干](https://leetcode.cn/problems/assign-cookies/description/)
 
