@@ -1,4 +1,4 @@
-# 代码随想录算法训练营第二十一天 ｜Leetcode491.递增子序列 、Leetcode46.全排列 、Leetcode47.全排列II、Leetcode332.重新安排行程、Leetcode51.N皇后、Leetcode37.解数独
+# 代码随想录算法训练营第二十二天 ｜Leetcode491.递增子序列 、Leetcode46.全排列 、Leetcode47.全排列II、Leetcode332.重新安排行程、Leetcode51.N皇后、Leetcode37.解数独
 
 ## [491 递增子序列](https://leetcode.cn/problems/non-decreasing-subsequences/description/)
 
