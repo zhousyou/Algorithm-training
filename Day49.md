@@ -1,4 +1,4 @@
-# 代码随想录算法训练营第四十九天 ｜最小生成树之prim
+# 代码随想录算法训练营第四十九天 ｜最小生成树之prim、最小生成树之Kruskal
 
 ## [最小生成树之prim](https://kamacoder.com/problempage.php?pid=1053)
 
@@ -47,4 +47,66 @@ for i in minDist:
 
 print(res)
 
+```
+
+## [最小生成树之Kruskal](https://kamacoder.com/problempage.php?pid=1053)
+
+> 文章讲解：https://www.programmercarl.com/kamacoder/0053.寻宝-Kruskal.html#其他语言版本
+
+### 思路
+
+与prim算法不同，kruskal的算法从边的角度出发，prim算法是从点的角度出发。kruskal的主要思想也是贪心的：
+* 对边的权值进行排序
+* 每次判断最小权值的边的节点，如果不在一个集合中则加入到最小生成树的集合里
+因为也是判断两个节点是否在同一个集合的问题，所以也要用并查集的思想。
+
+### Python代码
+```python {.line-numbers}
+class Edge:
+    def __init__(self, l, r, val):
+        self.l = l
+        self.r = r
+        self.val = val
+    
+class Uionfind:
+    def __init__(self, n):
+        self.father = list(range(n+1))
+    
+    def find(self, u):
+        if u == self.father[u]:
+            return u 
+        else:
+            self.father[u] = self.find(self.father[u])
+            return self.father[u]
+    
+    def isSame(self, u, v):
+        return self.find(u) == self.find(v)
+    
+    def join(self, u, v):
+        u = self.find(u)
+        v = self.find(v)
+        if u != v:
+            self.father[v] = u
+
+def Kruskal(edges, n):
+    edges.sort(key = lambda edge: edge.val)
+    obj = Uionfind(n+1)
+    res = 0
+    for edge in edges:
+        if obj.isSame(edge.l, edge.r) == False:
+            obj.join(edge.r, edge.l)
+            res += edge.val
+    return res 
+
+if __name__ == "__main__":
+    n, m = map(int, input().split())
+    edges = []
+    for _ in range(m):
+        l, r, val = map(int, input().split())
+        edge = Edge(l, r, val)
+        edges.append(edge)
+    
+    res = Kruskal(edges, n)
+    print(res)
+    
 ```
